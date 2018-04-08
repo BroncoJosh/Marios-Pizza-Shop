@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MariosPizzaShop.Models;
+using MariosPizzaShop.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -22,7 +23,10 @@ namespace MariosPizzaShop.Controllers
 
         public ViewResult List()
         {
-            return View(_pizzaRepository.Pizzas);
+            PizzasListViewModel pizzasListViewModel = new PizzasListViewModel();
+            pizzasListViewModel.Pizzas = _pizzaRepository.Pizzas;
+            pizzasListViewModel.CurrentCategory = "Cheese Pizza";
+            return View(pizzasListViewModel);
         }
     }
 }

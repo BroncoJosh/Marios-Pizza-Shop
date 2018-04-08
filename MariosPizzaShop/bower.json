@@ -1,0 +1,25 @@
+{
+  "name": "MariosPizzaShop",
+  "homepage": "https://github.com/BroncoJosh/Marios-Pizza-Shop",
+  "authors": [
+    "Josh <joshuawhite1@u.boisestate.edu>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "3.3.7",
+    "jquery": "3.2.1"
+  },
+  "resolutions": {
+    "jquery": "3.2.1"
+  }
+}
