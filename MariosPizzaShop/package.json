@@ -3,6 +3,10 @@
   "name": "asp.net",
   "private": true,
   "devDependencies": {
-    "bootstrap": "3.3.7" 
+    "bootstrap": "3.3.7"
+  },
+
+  "tools": {
+    "Microsoft.EntityFrameworkCore.Tools.DotNet": "1.0.0"
   }
 }
