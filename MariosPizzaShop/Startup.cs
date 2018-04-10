@@ -32,6 +32,12 @@ namespace MariosPizzaShop
             services.AddTransient<ICategoryRepository, CategoryRepository>();
             services.AddTransient<IPizzaRepository, PizzaRepository>();
             services.AddMvc();
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped<ShoppingCart>(sp => ShoppingCart.GetCart(sp));
+
+            services.AddMemoryCache();
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -40,9 +46,10 @@ namespace MariosPizzaShop
             app.UseDeveloperExceptionPage();
             app.UseStatusCodePages();
             app.UseStaticFiles();
+            app.UseSession();
             app.UseMvcWithDefaultRoute();
-
             
+
         }
     }
 }
