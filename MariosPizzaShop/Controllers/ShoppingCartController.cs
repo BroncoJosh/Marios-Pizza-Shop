@@ -38,5 +38,27 @@ namespace MariosPizzaShop.Controllers
             var selectedPizza = _pizzaRepository.Pizzas.FirstOrDefault(p => p.PizzaId == pizzaId);
 
         }*/
+
+        public RedirectToActionResult AddToShoppingCart(int id)
+        {
+            var selectedPizza = _pizzaRepository.Pizzas.FirstOrDefault(p => p.PizzaId == id);
+
+            if (selectedPizza != null)
+            {
+                _shoppingCart.AddToCart(selectedPizza, 1);
+            }
+            return RedirectToAction("Index");
+        }
+
+        public RedirectToActionResult RemoveFromShoppingCart(int id)
+        {
+            var selectedPizza = _pizzaRepository.Pizzas.FirstOrDefault(p => p.PizzaId == id);
+
+            if (selectedPizza != null)
+            {
+                _shoppingCart.RemoveFromCart(selectedPizza);
+            }
+            return RedirectToAction("Index");
+        }
     }
 }

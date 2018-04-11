@@ -21,12 +21,44 @@ namespace MariosPizzaShop.Controllers
             _categoryRepository = categoryRepository;
         }
 
-        public ViewResult List()
+        /*public ViewResult List()
         {
             PizzasListViewModel pizzasListViewModel = new PizzasListViewModel();
             pizzasListViewModel.Pizzas = _pizzaRepository.Pizzas;
             pizzasListViewModel.CurrentCategory = "Cheese Pizza";
             return View(pizzasListViewModel);
+        }
+*/
+
+        public ViewResult List(string category)
+        {
+            IEnumerable<Pizza> pizzas = new List<Pizza>();
+            string currentCategory = string.Empty;
+
+            if (string.IsNullOrEmpty(category))
+            {
+                pizzas = _pizzaRepository.Pizzas.OrderBy(p => p.PizzaId);
+                currentCategory = "All Pizzas";
+            }
+            else
+            {
+                pizzas = _pizzaRepository.Pizzas.Where(p => p.Category.CategoryName.Equals(category)).OrderBy(p => p.PizzaId);
+                currentCategory = _categoryRepository.Categories.FirstOrDefault(c => c.CategoryName == category).CategoryName;
+            }
+            return View(new PizzasListViewModel
+            {
+                Pizzas = pizzas,
+                CurrentCategory = currentCategory
+            });
+        }
+
+        public IActionResult Details(int id)
+        {
+            var pizza = _pizzaRepository.GetPizzaId(id);
+            if (pizza == null)
+                return NotFound();
+
+            return View(pizza);
         }
     }
 }

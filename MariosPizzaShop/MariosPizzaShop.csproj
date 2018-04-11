@@ -9,7 +9,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Shared\Components\CategoryMenu\" />
     <Folder Include="wwwroot\Images\" />
   </ItemGroup>
 

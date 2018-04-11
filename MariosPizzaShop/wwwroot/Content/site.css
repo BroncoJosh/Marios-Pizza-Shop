@@ -62,8 +62,8 @@ footer {
 }
 
 .navbar-inverse {
-    background-color: #a593c2;
-    border-color: #a593c2;
+    background-color: red;
+    border-color: red;
   
 }
 
@@ -100,4 +100,20 @@ footer {
 {
     background-color: #fcaeae !important;
     border-color: #fba1a1 !important;
+}
+
+
+
+
+.navbar-inverse .navbar-nav .open .dropdown-menu>li>a,.navbar-default .navbar-nav .open .dropdown-menu {
+    background-color: white;
+    color:black;
+}
+
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+    background-image: none !important;
+}
+
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+    background-color: red;
 }
