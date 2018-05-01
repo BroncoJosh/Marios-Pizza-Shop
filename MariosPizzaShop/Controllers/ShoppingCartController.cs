@@ -42,7 +42,7 @@ namespace MariosPizzaShop.Controllers
         public RedirectToActionResult AddToShoppingCart(int id)
         {
             var selectedPizza = _pizzaRepository.Pizzas.FirstOrDefault(p => p.PizzaId == id);
-
+            Console.WriteLine("Id: " + id);
             if (selectedPizza != null)
             {
                 _shoppingCart.AddToCart(selectedPizza, 1);

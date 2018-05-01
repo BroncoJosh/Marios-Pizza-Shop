@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
@@ -13,12 +14,26 @@ namespace MariosPizzaShop.Models
 		{
 		    if (!context.Categories.Any())
 		    {
-		        context.Categories.AddRange(Categories.Select(c => c.Value));
+                DataTable dt = new DataTable("Categories");
+		        dt.Columns["CategoryId"].AutoIncrement = true;
+		        dt.Columns["CategoryId"].AutoIncrementStep = -1;
+		        dt.Columns["CategoryId"].AutoIncrementSeed = -1;
+
+		        dt.Columns["CategoryId"].AutoIncrementStep = 1;
+		        dt.Columns["CategoryId"].AutoIncrementSeed = 1;
+                context.Categories.AddRange(Categories.Select(c => c.Value));
 		    }
 
             if (!context.Pizzas.Any())
 			{
-				context.AddRange
+			    DataTable dt = new DataTable("Pizzas");
+			    dt.Columns["PizzaId"].AutoIncrement = true;
+			    dt.Columns["PizzaId"].AutoIncrementStep = -1;
+			    dt.Columns["PizzaId"].AutoIncrementSeed = -1;
+
+			    dt.Columns["PizzaId"].AutoIncrementStep = 1;
+			    dt.Columns["PizzaId"].AutoIncrementSeed = 1;
+                context.AddRange
 				(
 					new Pizza
 					{
