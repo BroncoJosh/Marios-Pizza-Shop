@@ -33,7 +33,7 @@ namespace MariosPizzaShop.Controllers
         public ViewResult List(string category)
         {
             IEnumerable<Pizza> pizzas = new List<Pizza>();
-            string currentCategory = string.Empty;
+            string currentCategory = "";
 
             if (string.IsNullOrEmpty(category))
             {
@@ -42,7 +42,10 @@ namespace MariosPizzaShop.Controllers
             }
             else
             {
+                pizzas = _pizzaRepository.Pizzas.Where(p => p.Category.CategoryName == category);
+/*
                 pizzas = _pizzaRepository.Pizzas.Where(p => p.Category.CategoryName.Equals(category)).OrderBy(p => p.PizzaId);
+*/
                 currentCategory = _categoryRepository.Categories.FirstOrDefault(c => c.CategoryName == category).CategoryName;
             }
             return View(new PizzasListViewModel
