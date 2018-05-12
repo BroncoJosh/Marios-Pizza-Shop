@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using MariosPizzaShop.ViewModels;
@@ -57,6 +58,7 @@ namespace MariosPizzaShop.Controllers
         [AllowAnonymous]
         public IActionResult Register()
         {
+            Debug.WriteLine("Entered Here??");
             return View();
         }
 
@@ -75,7 +77,7 @@ namespace MariosPizzaShop.Controllers
                     return RedirectToAction("Index", "Home");
                 }
             }
-
+            ModelState.AddModelError("", "Password is not of the correct format!");
             return View(loginViewModel);
         }
 
